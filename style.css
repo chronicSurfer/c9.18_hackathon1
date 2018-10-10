@@ -11,7 +11,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 20%;
+    height: 15%;
     width: 100%;
     font-size: 2vmin;
 }
@@ -20,13 +20,13 @@ header {
 .game-border {
     height: 80%;
     width: 80%;
+
 }
 
 .container {
-    height: 80%;
-    width: 80%;
+    height: 100%;
+    width: 100%;
     border: 1px solid black;
-    margin: 0;
 }
 
 .square {
@@ -34,8 +34,7 @@ header {
     width: 12%;
     background-color: darkgreen;
     border: 1px black solid;
-    display: inline;
-    position: relative;
+    float: left;
 }
 .p1{
     background-color: white;
