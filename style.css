@@ -1,0 +1,34 @@
+.body {
+    height: 100vh;
+    width: 100vw;
+    font-size: 0;
+    margin: 0;
+}
+
+header {
+    background-color: black;
+    color: white;
+    justify-content: center;
+    align-content: center;
+    height: 20%;
+    width: 100%;
+}
+
+.game-border {
+    height: 80%;
+    width: 80%;
+}
+
+.container {
+    height: 100%;
+    width: 80%;
+    border: 1px solid black;
+}
+
+.square {
+    height: 12%;
+    width: 12%;
+    background-color: darkgreen;
+    border: 1px black solid;
+    display: inline;
+}
