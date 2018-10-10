@@ -1,3 +1,24 @@
+$(document).ready(InitializeApp);
+
+var player = 1;
+
+function InitializeApp(){
+    $('.square').click(checkingPlayerStatus);
+}
+
+
+function checkingPlayerStatus(){
+    if (player === 1){
+        $(event.currentTarget).addClass('p1');
+        player = 2;
+    }
+    else if (player === 2){
+        $(event.currentTarget).addClass('p2');
+        player = 1;
+    }
+
+}
+
 //0 means empty sqaure 1 is P1 and 2 is P2
 var squareArray = [0,0,0,0,0,1,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,];
 var chainArray = [];
@@ -51,9 +72,4 @@ function checkLeft(){
     var leftSquare = squareArray[tempCurrent - 1];
     chainArray.push(currentSquarePosition);
     chainArray.push(leftSquare);
-    
-    
-    
-
-
 }
