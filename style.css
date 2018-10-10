@@ -37,19 +37,16 @@ header {
     float: left;
 }
 .p1{
-
-    background-image: url("images/whitechip.png");
-
-    background-size: 70%;
+    background-image: url("images/blackchip.jpg");
+    background-size: 40%;
     background-repeat:no-repeat;
 }
 
 .p2{
 
 
-    background-image: url("images/blackchip.jpg");
-
-    background-size: 70%;
+    background-image: url("images/whitechip.png");
+    background-size: 40%;
     background-repeat:no-repeat;
 }
 
