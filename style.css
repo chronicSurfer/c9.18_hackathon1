@@ -1,7 +1,15 @@
 .p1{
     background-color: white;
+    background-image: url("images/whitechip.png");
+    border-radius: 50%;
+    background-size: --------------------;
+    background-repeat:no-repeat;
 }
 
 .p2{
     background-color: black;
+    background-image: url("images/blackchip.jpg");
+    border-radius: 50%;
+    background-size: --------------------;
+    background-repeat:no-repeat;
 }
