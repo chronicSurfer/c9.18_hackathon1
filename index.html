@@ -7,67 +7,38 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="main.js">
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <div class="playerStats">
-            <p class="player1">SITH: </p>
+            <p class="player1">SITH: <div class="counterSith"></div></p>
         </div>
         <div class="playerStats">
             <p class="game-header">SPACE WARS</p>
         </div>
         <div class="playerStats">
-            <p class="player2">BORG: </p>
+            <p class="player2">BORG: <div class="counterBorg"></div></p>
         </div>
 
 
     </header>
-    <!--<div class="container">-->
-        <!--&lt;!&ndash; Trigger the modal with a button &ndash;&gt;-->
-        <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Directions & Settings</button>-->
-
-        <!--&lt;!&ndash; Modal &ndash;&gt;-->
-        <!--<div class="modal fade" id="myModal" role="dialog">-->
-            <!--<div class="modal-dialog">-->
-
-                <!--&lt;!&ndash; Modal content&ndash;&gt;-->
-                <!--<div class="modal-content">-->
-                    <!--<div class="modal-header">-->
-                        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
-                        <!--<h4 class="modal-title">Directions</h4>-->
-                    <!--</div>-->
-                    <!--<div class="modal-body">-->
-                        <!--<p>Lorem Ipsum.</p>-->
-                    <!--</div>-->
-                    <!--<div class="modal-footer">-->
-                        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-            <!--</div>-->
-        <!--</div>-->
-
-    <!--</div>-->
-
 
         <div class="container-game">
 
 
-            <div class="square top-edge left-edge top-left p1">0</div>
-            <div class="square top-edge p2">1</div>
-            <div class="square top-edge p2">2</div>
-            <div class="square top-edge p2">3</div>
+            <div class="square top-edge left-edge top-left">0</div>
+            <div class="square top-edge">1</div>
+            <div class="square top-edge">2</div>
+            <div class="square top-edge">3</div>
             <div class="square top-edge">4</div>
             <div class="square top-edge">5</div>
-            <div class="square top-edge p1">6</div>
+            <div class="square top-edge">6</div>
             <div class="square top-edge right-edge top-right">7</div>
             <div class="square left-edge">8</div>
             <div class="square">9</div>
@@ -91,16 +62,16 @@
 
             <div class="square">25</div>
             <div class="square">26</div>
-            <div class="square">27</div>
-            <div class="square">28</div>
+            <div class="square p1">27</div>
+            <div class="square p2">28</div>
             <div class="square">29</div>
             <div class="square">30</div>
             <div class="square right-edge">31</div>
             <div class="square left-edge">32</div>
             <div class="square">33</div>
             <div class="square">34</div>
-            <div class="square">35</div>
-            <div class="square">36</div>
+            <div class="square p2">35</div>
+            <div class="square p1">36</div>
             <div class="square">37</div>
             <div class="square">38</div>
             <div class="square right-edge">39</div>
@@ -130,6 +101,9 @@
             <div class="square bottom-edge right-edge bottom-right">63</div>
 
         </div>
-
+    <footer class="directions">
+        <p class="directions2"><a href="directions.html" class="directionLink">Directions & Settings</a></p>
+        <p class="direction2 sweetbutton"><a href="" class="directionLink">Sweet Button</a></p>
+    </footer>
 </body>
 </html>
