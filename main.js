@@ -32,6 +32,7 @@ function checkingPlayerStatus(){
 
         classToAdd = "p1";
         numberToAddToArray = 1;
+      // checkIfThereIsAvailableMoves(numberToAddToArray);
         directionChecker();
         console.log("it is still player 1 turn");
         
@@ -61,6 +62,7 @@ function checkingPlayerStatus(){
     {
         classToAdd="p2";
         numberToAddToArray = 2;
+      // checkIfThereIsAvailableMoves(numberToAddToArray);
         directionChecker();
         console.log("it is still player 2 turn");
         
@@ -99,7 +101,14 @@ function checkingPlayerStatus(){
         console.log('Game over! ' + winnerOfGame + ' wins!!');
     }
 }
-
+function checkIfThereIsAvailableMoves(number){
+    for (var checkingEachNumberOfSquareArray= 0; checkingEachNumberOfSquareArray < squareArray.length; checkingEachNumberOfSquareArray++){
+        if (squareArray[checkingEachNumberOfSquareArray] === 0){
+            ///run all the 'check' functions but replace event.currentTarget with  below.
+            ($(`.square:nth-child(${squareArray[checkingEachNumberOfSquareArray] + 1})`))
+        }
+    }
+}
 
 
 function checkNumberOfP(){
