@@ -23,6 +23,8 @@ var numberToAddToArray = null;
 function InitializeApp(){
     $('.square').click(checkingPlayerStatus);
     $('.sweetbutton').click(changesWhoIsPlaying);
+    $('.counterBorg').text(whiteCounter);
+    $('.counterSith').text(blackCounter);
 }
 
 function changesWhoIsPlaying(){
@@ -101,17 +103,24 @@ function checkingPlayerStatus(){
     }
 
     if (parseInt(whiteCounter) > parseInt(blackCounter)){
-        winnerOfGame = 'White Player';
+        winnerOfGame = 'Borg';
     }
     else if (parseInt(whiteCounter) < parseInt(blackCounter)){
-        winnerOfGame = 'Black Player';
+        winnerOfGame = 'Sith';
     }
 
 
     /////KNOW WHEN GAME IS OVER!
-    if (parseInt(whiteCounter) + parseInt(blackCounter === 64))
+    if ((parseInt(whiteCounter) + parseInt(blackCounter)) === 64)
     {
-        console.log('Game over! ' + winnerOfGame + ' wins!!');
+        if(winnerOfGame = 'Sith'){
+           $('.counterSith').text('WINS');
+            $('.counterBorg').text('LOSES');
+        }
+        else{
+            $('.counterBorg').text('WINS');
+            $('.counterSith').text('LOSES');
+        }
     }
 }
 
