@@ -3,6 +3,7 @@ body {
     width: 100vw;
     font-size: 0;
     margin: 0;
+    background-color: rgb(168,168,168);
 }
 
 header {
@@ -17,16 +18,10 @@ header {
 }
 
 
-.game-border {
+.container {
     height: 80%;
     width: 80%;
-
-}
-
-.container {
-    height: 100%;
-    width: 100%;
-    border: 1px solid black;
+    margin: 1% auto;
 }
 
 .square {
@@ -40,18 +35,13 @@ header {
     color: rgb(119, 192, 255);
 }
 .p1{
-
     background-image: url("images/blackchip.jpg");
-
     background-size: 70%;
     background-repeat:no-repeat;
 }
 
 .p2{
-
-
     background-image: url("images/whitechip.png");
-
     background-size: 70%;
     background-repeat:no-repeat;
 }

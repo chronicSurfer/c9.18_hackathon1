@@ -13,9 +13,10 @@ function InitializeApp(){
     $('.square').click(checkingPlayerStatus);
 }
 
-
+//this is a function that changes squareArray's values at the position on the array that matches with the text of the div.
 function checkingPlayerStatus(){
     if (player === 1){
+
         
         
         checkLeft();
@@ -33,10 +34,31 @@ function checkingPlayerStatus(){
     //     player = 1;
     // }
 
+
+        $(event.currentTarget).addClass('p1');
+        var textOfCurrentTarget =  $(event.currentTarget).text();
+        squareArray[textOfCurrentTarget] = 1;
+        player = 2;
+    }
+    else if (player === 2){
+        $(event.currentTarget).addClass('p2');
+        var textOfCurrentTarget =  $(event.currentTarget).text();
+        squareArray[textOfCurrentTarget] = 2;
+        player = 1;
+    }
+    changeSquarePlayerClass([ 5,6,7,8 ]);
+
 }
 
 
 
+
+
+
+
+//0 means empty sqaure 1 is P1 and 2 is P2
+var squareArray = [0,0,0,0,0,0,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+var chainArray = [];
 
 
 
@@ -198,11 +220,42 @@ function checkTop(){
 }
 
 
-/*
+
 function changeSquarePlayerClass(arrayFromOscar){
-
     var arrayIReceived = arrayFromOscar;
+    console.log(arrayIReceived);
+    console.log(squareArray);
+     if ($(`.square:nth-child(${arrayIReceived[0] + 1})`).hasClass('p1')){
+        for (var receivedArrayIndex = 0; receivedArrayIndex < arrayIReceived.length; receivedArrayIndex++) {
+            $(`.square:nth-child(${arrayIReceived[receivedArrayIndex] + 1})`).removeClass("p1 p2");
+            $(`.square:nth-child(${arrayIReceived[receivedArrayIndex] + 1})`).addClass('p1');
 
+        }
+        for (var indexChangingSquareArray = 0; indexChangingSquareArray < arrayIReceived.length; indexChangingSquareArray ++){
+            squareArray[arrayIReceived[indexChangingSquareArray]] = 1;
+        }
+    }
+     else if ($(`.square:nth-child(${arrayIReceived[0] + 1})`).hasClass('p2')){
+          for (var receivedArrayIndex = 0; receivedArrayIndex < arrayIReceived.length; receivedArrayIndex++){
+              $(`.square:nth-child(${arrayIReceived[receivedArrayIndex] + 1})`).removeClass("p1 p2");
+              $(`.square:nth-child(${arrayIReceived[receivedArrayIndex] + 1})`).addClass('p2');
+       }
+         for (var indexChangingSquareArray = 0; indexChangingSquareArray < arrayIReceived.length; indexChangingSquareArray ++){
+             squareArray[arrayIReceived[indexChangingSquareArray]] = 2;
+         }
+    }
+    console.log(squareArray);
+}
+
+
+
+
+
+
+
+
+
+/*
     if ($(arrayIReceived[0]).hasClass('p1')){
        for (var receivedArrayIndex = 0; receivedArrayIndex < arrayIReceived.length; receivedArrayIndex++){
            arrayIReceived[receivedArrayIndex].removeClass("p1 p2");
@@ -216,5 +269,4 @@ function changeSquarePlayerClass(arrayFromOscar){
             arrayIReceived[receivedArrayIndex].addClass('p2');
         }
     }
-
-}*/
+*/
