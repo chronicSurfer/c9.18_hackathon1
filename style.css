@@ -3,12 +3,10 @@ body {
     width: 100vw;
     font-size: 0;
     margin: 0;
-    /*background-color: rgb(168,168,168);*/
-    background-color: black;
+    background-image: url("images/space.png");
 }
 
 header {
-    background-color: black;
     color: white;
     display: flex;
     align-items: center;
@@ -26,23 +24,29 @@ header {
     width: 60%;
 }
 
-.game-header {
-}
-
 
 .playerStats {
     height: 100%;
     width: 33.33%;
     display: inline-flex;
-    font-size: 2rem;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 3em;
     color: black;
-    text-shadow: 1px 1px 2px #FFFFFF;
+    text-shadow: 3px 1px 2px red;
 
 }
 
 
+.button {
+    background-color: red;
+    font: black;
+    font-size: 3rem;
+}
 
-.container {
+
+
+.container-game {
     height: 80%;
     width: 80%;
     margin: 1% auto;
@@ -51,13 +55,11 @@ header {
 .square {
     height: 12%;
     width: 12%;
-    background-color: black;
+    /*background-color: black;*/
     /*box shadowing created at cssmatic website*/
-    -webkit-box-shadow:  0px 1px 19px 1px rgba(255,255,255,1);
-    -moz-box-shadow:  0px 1px 19px 1px rgba(255,255,255,1);
-    box-shadow:  0px 1px 19px 1px rgba(255,255,255,1);
-    width: 11%;
-    background-color: darkgreen;
+    -webkit-box-shadow:  0px 1px 19px 1px red;
+    -moz-box-shadow:  0px 1px 19px 1px red;
+    box-shadow:  0px 1px 19px 1px red;
     border: 1px black solid;
     float: left;
     font-size: 1rem;
@@ -82,8 +84,8 @@ header {
 
 .p1{
 
-    background-image: url("images/blackchip_new.png");
-    background-size: 80%;
+    background-image: url("images/deathstar.png");
+    background-size: 45%;
     background-repeat:no-repeat;
     pointer-events: none;
     background-position: center;
@@ -91,8 +93,8 @@ header {
 }
 
 .p2{
-    background-image: url("images/whitechip.png");
-    background-size: 65%;
+    background-image: url("images/borgcube.png");
+    background-size: 60%;
     background-repeat:no-repeat;
     pointer-events: none;
     background-position: center;
