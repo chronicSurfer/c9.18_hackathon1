@@ -8,6 +8,7 @@ var currentSquare = null;
 var nextSquarePositiononBigArray = null;
 var currentSquarePositionNumber = null;
 var gridWidth = 8;
+var classToAdd = "p1";
 
 function InitializeApp(){
     $('.square').click(checkingPlayerStatus);
@@ -16,7 +17,7 @@ function InitializeApp(){
 //this is a function that changes squareArray's values at the position on the array that matches with the text of the div.
 function checkingPlayerStatus(){
     if (player === 1){
-
+        classToAdd = "p1";
         
         
         checkLeft();
@@ -32,14 +33,28 @@ function checkingPlayerStatus(){
         checkBottom();
         chainArray=[];
         checkBottomLeft();
+        player=2;
+        console.log("Current player is now "+ player);
         
     
     }
     else if (player === 2){
-        $(event.currentTarget).addClass('p2');
-        var textOfCurrentTarget =  $(event.currentTarget).text();
-        squareArray[textOfCurrentTarget] = 2;
-        player = 1;
+        classToAdd="p2";
+        checkLeft();
+        chainArray=[];
+        checkTop();
+        chainArray=[];
+        checkTopLeft();
+        chainArray=[];
+        checkTopRight();
+        chainArray=[];
+        checkBottomRight();
+        chainArray=[];
+        checkBottom();
+        chainArray=[];
+        checkBottomLeft();
+        player=1
+        console.log("Current player is now "+ player);
     }
     // changeSquarePlayerClass([ 5,6,7,8 ]);
 
@@ -102,7 +117,7 @@ function checkLeft(){
                 chainArray.push(nextSquarePositiononBigArray);
                 console.log("ended cuz next is end of working chain");
                 console.log(chainArray);
-                $(event.currentTarget).addClass('p1');
+                $(event.currentTarget).addClass(classToAdd);
                 return chainArray;
             }
             nextSquarePositiononBigArray = currentSquare.text()-(i+1);
@@ -113,7 +128,7 @@ function checkLeft(){
     
             }else if(nextSquarePositiononBigArray===player){
                 chainArray.push(nextSquarePositiononBigArray)
-                $(event.currentTarget).addClass('p1');
+                $(event.currentTarget).addClass(classToAdd);
                 player = 2;
                 console.log("my chain 2 is: "+ chainArray)
                 return chainArray;
@@ -175,7 +190,7 @@ function checkTop(){
                 chainArray.push(nextSquarePositiononBigArray);
                 console.log("ended cuz next top is end of working chain");
                 console.log(chainArray);
-                $(event.currentTarget).addClass('p1');
+                $(event.currentTarget).addClass(classToAdd);
                 return chainArray;
             }
             
@@ -186,7 +201,7 @@ function checkTop(){
     
             }else if(nextSquarePositiononBigArray===player){
                 chainArray.push(nextSquarePositiononBigArray)
-                $(event.currentTarget).addClass('p1');
+                $(event.currentTarget).addClass(classToAdd);
                 player = 2;
                 console.log("my chain 2 is: "+ chainArray)
                 return chainArray;
@@ -249,7 +264,7 @@ function checkTopLeft(){
                 chainArray.push(nextSquarePositiononBigArray);
                 console.log("ended cuz next top is end of working chain");
                 console.log(chainArray);
-                $(event.currentTarget).addClass('p1');
+                $(event.currentTarget).addClass(classToAdd);
                 return chainArray;
             }
             
@@ -260,7 +275,7 @@ function checkTopLeft(){
     
             }else if(nextSquarePositiononBigArray===player){
                 chainArray.push(nextSquarePositiononBigArray)
-                $(event.currentTarget).addClass('p1');
+                $(event.currentTarget).addClass(classToAdd);
                 player = 2;
                 console.log("my chain 2 is: "+ chainArray)
                 return chainArray;
@@ -324,7 +339,7 @@ function checkTopRight(){
                 chainArray.push(nextSquarePositiononBigArray);
                 console.log("ended cuz next top is end of working chain");
                 console.log(chainArray);
-                $(event.currentTarget).addClass('p1');
+                $(event.currentTarget).addClass(classToAdd);
                 return chainArray;
             }
             
@@ -335,7 +350,7 @@ function checkTopRight(){
     
             }else if(nextSquarePositiononBigArray===player){
                 chainArray.push(nextSquarePositiononBigArray)
-                $(event.currentTarget).addClass('p1');
+                $(event.currentTarget).addClass(classToAdd);
                 player = 2;
                 console.log("my chain 2 is: "+ chainArray)
                 return chainArray;
@@ -398,7 +413,7 @@ function checkBottomRight(){
                 chainArray.push(nextSquarePositiononBigArray);
                 console.log("ended cuz next bottom right is end of working chain");
                 console.log(chainArray);
-                $(event.currentTarget).addClass('p1');
+                $(event.currentTarget).addClass(classToAdd);
                 return chainArray;
             }
             
@@ -409,7 +424,7 @@ function checkBottomRight(){
     
             }else if(nextSquarePositiononBigArray===player){
                 chainArray.push(nextSquarePositiononBigArray)
-                $(event.currentTarget).addClass('p1');
+                $(event.currentTarget).addClass(classToAdd);
                 player = 2;
                 console.log("my chain 2 is: "+ chainArray)
                 return chainArray;
@@ -471,7 +486,7 @@ function checkBottom(){
                 chainArray.push(nextSquarePositiononBigArray);
                 console.log("ended cuz next bottom is end of working chain");
                 console.log(chainArray);
-                $(event.currentTarget).addClass('p1');
+                $(event.currentTarget).addClass(classToAdd);
                 return chainArray;
             }
             
@@ -482,7 +497,7 @@ function checkBottom(){
     
             }else if(nextSquarePositiononBigArray===player){
                 chainArray.push(nextSquarePositiononBigArray)
-                $(event.currentTarget).addClass('p1');
+                $(event.currentTarget).addClass(classToAdd);
                 player = 2;
                 console.log("my chain 2 is: "+ chainArray)
                 return chainArray;
@@ -544,7 +559,7 @@ function checkBottomLeft(){
                 chainArray.push(nextSquarePositiononBigArray);
                 console.log("ended cuz next bottom is end of working chain");
                 console.log(chainArray);
-                $(event.currentTarget).addClass('p1');
+                $(event.currentTarget).addClass(classToAdd);
                 return chainArray;
             }
             
@@ -555,7 +570,7 @@ function checkBottomLeft(){
     
             }else if(nextSquarePositiononBigArray===player){
                 chainArray.push(nextSquarePositiononBigArray)
-                $(event.currentTarget).addClass('p1');
+                $(event.currentTarget).addClass(classToAdd);
                 player = 2;
                 console.log("my chain 2 is: "+ chainArray)
                 return chainArray;
@@ -573,10 +588,10 @@ function changeSquarePlayerClass(arrayFromOscar){
     var arrayIReceived = arrayFromOscar;
     console.log(arrayIReceived);
     console.log(squareArray);
-     if ($(`.square:nth-child(${arrayIReceived[0] + 1})`).hasClass('p1')){
+     if ($(`.square:nth-child(${arrayIReceived[0] + 1})`).hasClass(classToAdd)){
         for (var receivedArrayIndex = 0; receivedArrayIndex < arrayIReceived.length; receivedArrayIndex++) {
             $(`.square:nth-child(${arrayIReceived[receivedArrayIndex] + 1})`).removeClass("p1 p2");
-            $(`.square:nth-child(${arrayIReceived[receivedArrayIndex] + 1})`).addClass('p1');
+            $(`.square:nth-child(${arrayIReceived[receivedArrayIndex] + 1})`).addClass(classToAdd);
 
         }
         for (var indexChangingSquareArray = 0; indexChangingSquareArray < arrayIReceived.length; indexChangingSquareArray ++){
