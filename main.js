@@ -22,7 +22,19 @@ var numberToAddToArray = null;
 
 function InitializeApp(){
     $('.square').click(checkingPlayerStatus);
+    $('.sweetbutton').click(changesWhoIsPlaying);
 }
+
+function changesWhoIsPlaying(){
+    if(player ===1){
+        player = 2;
+    }
+    else{
+        player = 1;
+    }
+}
+
+
 
 //this is a function that changes squareArray's values at the position on the array that matches with the text of the div.
 function checkingPlayerStatus(){
