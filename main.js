@@ -10,9 +10,7 @@ var currentSquare = null;
 var nextSquarePositiononBigArray = null;
 var currentSquarePositionNumber = null;
 var gridWidth = 8;
-
 var classToAdd = "p1";
-
 var whiteCounter = 2;
 var blackCounter = 2;
 var winnerOfGame = null;
@@ -54,7 +52,7 @@ function checkingPlayerStatus(){
         }
 
         ///truthy statement because chainArray contains something
-        if(chainArray)
+        if(chainArray === true)
         {
             $(event.currentTarget).addClass(classToAdd);
             var textOfCurrentTarget =  $(event.currentTarget).text();
@@ -95,7 +93,7 @@ function checkingPlayerStatus(){
         }
 
         ///truthy statement because chainArray contains something
-        if(chainArray)
+        if(chainArray === true)
         {
         $(event.currentTarget).addClass(classToAdd);
         var textOfCurrentTarget =  $(event.currentTarget).text();
@@ -115,8 +113,10 @@ function checkingPlayerStatus(){
         winnerOfGame = 'Black Player';
     }
 
+
+    /////KNOW WHEN GAME IS OVER!
     if (parseInt(whiteCounter) + parseInt(blackCounter === 64))
-    {   /////KNOW WHEN GAME IS OVER!
+    {
         console.log('Game over! ' + winnerOfGame + ' wins!!');
     }
 }
