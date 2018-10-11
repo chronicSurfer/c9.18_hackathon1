@@ -126,7 +126,8 @@ function checkingPlayerStatus(){
 function checkIfThereIsAvailableMoves(number){
     for (var checkingEachNumberOfSquareArray= 0; checkingEachNumberOfSquareArray < squareArray.length; checkingEachNumberOfSquareArray++){
         if (squareArray[checkingEachNumberOfSquareArray] === 0){
-            ///
+            ///run all the 'check' functions but replace event.currentTarget with  below.
+            ($(`.square:nth-child(${squareArray[checkingEachNumberOfSquareArray] + 1})`))
         }
     }
 }
@@ -746,28 +747,3 @@ function checkBottomLeft(){
 
 //this function changes the divs classes to what ever the first div in the array is. The array I am speaking about is the array given to this
 //function from directionChecker function
-function changeSquarePlayerClass(arrayFromOscar){
-    var arrayIReceived = arrayFromOscar;
-    console.log(arrayIReceived);
-    console.log(squareArray);
-
-     if ($(`.square:nth-child(${arrayIReceived[0][0] + 1})`).hasClass(classToAdd)){
-         for (var receivedArrayIndex1 = 0; receivedArrayIndex1 < arrayIReceived.length; receivedArrayIndex1++) {
-
-             for (var receivedArrayIndex2 = 0; receivedArrayIndex2 < arrayIReceived[receivedArrayIndex1].length; receivedArrayIndex2++) {
-                 $(`.square:nth-child(${arrayIReceived[receivedArrayIndex1][receivedArrayIndex2] + 1})`).removeClass("p1 p2");
-                 $(`.square:nth-child(${arrayIReceived[receivedArrayIndex1][receivedArrayIndex2] + 1})`).addClass(classToAdd);
-                 console.log('black count is: ' + blackCounter)
-             }
-         }
-         for (var indexChangingSquareArray1 = 0; indexChangingSquareArray1 < arrayIReceived.length; indexChangingSquareArray1 ++) {
-
-             for (var indexChangingSquareArray2 = 0; indexChangingSquareArray2 < arrayIReceived[indexChangingSquareArray1].length; indexChangingSquareArray2++) {
-                 squareArray[arrayIReceived[indexChangingSquareArray1][indexChangingSquareArray2]] = numberToAddToArray;
-                 checkNumberOfP();
-             }
-         }
-    }
-
-    console.log(squareArray);
-}
