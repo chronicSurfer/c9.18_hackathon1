@@ -220,7 +220,8 @@ function checkTop(){
 }
 
 
-
+//this function changes the divs classes to what ever the first div in the array is. The array I am speaking about is the array given to this
+//function from directionChecker function
 function changeSquarePlayerClass(arrayFromOscar){
     var arrayIReceived = arrayFromOscar;
     console.log(arrayIReceived);
@@ -247,26 +248,3 @@ function changeSquarePlayerClass(arrayFromOscar){
     console.log(squareArray);
 }
 
-
-
-
-
-
-
-
-
-/*
-    if ($(arrayIReceived[0]).hasClass('p1')){
-       for (var receivedArrayIndex = 0; receivedArrayIndex < arrayIReceived.length; receivedArrayIndex++){
-           arrayIReceived[receivedArrayIndex].removeClass("p1 p2");
-           arrayIReceived[receivedArrayIndex].addClass('p1');
-       }
-    }
-
-    else if ($(arrayIRecieved[0]).hasClass('p2')){
-        for (var receivedArrayIndex = 0; receivedArrayIndex < arrayIReceived.length; receivedArrayIndex++){
-            arrayIReceived[receivedArrayIndex].removeClass("p1 p2");
-            arrayIReceived[receivedArrayIndex].addClass('p2');
-        }
-    }
-*/

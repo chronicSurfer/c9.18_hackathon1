@@ -42,14 +42,20 @@ header {
     color: rgb(119, 192, 255);
 }
 .p1{
-    background-image: url("images/blackchip.jpg");
-    background-size: 70%;
+
+    background-image: url("images/blackchip_new.png");
+    background-size: 80%;
     background-repeat:no-repeat;
+    pointer-events: none;
+    background-position: center;
+
 }
 
 .p2{
     background-image: url("images/whitechip.png");
-    background-size: 70%;
+    background-size: 65%;
     background-repeat:no-repeat;
+    pointer-events: none;
+    background-position: center;
 }
 
