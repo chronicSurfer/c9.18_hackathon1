@@ -8,6 +8,10 @@ var currentSquare = null;
 var nextSquarePositiononBigArray = null;
 var currentSquarePositionNumber = null;
 var gridWidth = 8;
+var whiteCounter = 2;
+var blackCounter = 2;
+var winnerOfGame = null;
+
 
 function InitializeApp(){
     $('.square').click(checkingPlayerStatus);
@@ -15,14 +19,17 @@ function InitializeApp(){
 
 //this is a function that changes squareArray's values at the position on the array that matches with the text of the div.
 function checkingPlayerStatus(){
+    if (parseInt(whiteCounter) + parseInt(blackCounter === 64)){
+        return;
+    }
     if (player === 1){
-
 
 
         checkLeft();
         checkTop();
         checkRight();
-
+        blackCounter++;
+        console.log('black count is: ' + blackCounter)
 
     }
     else if (player === 2){
@@ -30,13 +37,27 @@ function checkingPlayerStatus(){
         var textOfCurrentTarget =  $(event.currentTarget).text();
         squareArray[textOfCurrentTarget] = 2;
         player = 1;
+        whiteCounter++;
+        console.log('white count is: ' + whiteCounter)
     }
-    // changeSquarePlayerClass([ 5,6,7,8 ]);
+
+    changeSquarePlayerClass(chainArray);
+
+    if (parseInt(whiteCounter) > parseInt(blackCounter)){
+        winnerOfGame = 'White Player';
+    }
+    else{
+        winnerOfGame = 'Black Player';
+    }
+
+    if (parseInt(whiteCounter) + parseInt(blackCounter === 64)){   /////KNOW WHEN GAME IS OVER!
+        console.log('Game over! ' + winnerOfGame + ' wins!!');
+    }
 
 }
 
 
-//0 means empty sqaure 1 is P1 and 2 is P2
+//0 means empty square 1 is P1 and 2 is P2
 
 
 function directionChecker(){
@@ -271,6 +292,8 @@ function changeSquarePlayerClass(arrayFromOscar){
         for (var receivedArrayIndex = 0; receivedArrayIndex < arrayIReceived.length; receivedArrayIndex++) {
             $(`.square:nth-child(${arrayIReceived[receivedArrayIndex] + 1})`).removeClass("p1 p2");
             $(`.square:nth-child(${arrayIReceived[receivedArrayIndex] + 1})`).addClass('p1');
+            blackCounter++;
+            console.log('black count is: ' + blackCounter)
 
         }
         for (var indexChangingSquareArray = 0; indexChangingSquareArray < arrayIReceived.length; indexChangingSquareArray ++){
@@ -281,6 +304,8 @@ function changeSquarePlayerClass(arrayFromOscar){
         for (var receivedArrayIndex = 0; receivedArrayIndex < arrayIReceived.length; receivedArrayIndex++){
             $(`.square:nth-child(${arrayIReceived[receivedArrayIndex] + 1})`).removeClass("p1 p2");
             $(`.square:nth-child(${arrayIReceived[receivedArrayIndex] + 1})`).addClass('p2');
+            whiteCounter++;
+            console.log('white count is: ' + whiteCounter)
         }
         for (var indexChangingSquareArray = 0; indexChangingSquareArray < arrayIReceived.length; indexChangingSquareArray ++){
             squareArray[arrayIReceived[indexChangingSquareArray]] = 2;
