@@ -30,6 +30,7 @@ function checkingPlayerStatus(){
 
         classToAdd = "p1";
         numberToAddToArray = 1;
+        // checkIfThereIsAvailableMoves(numberToAddToArray);
         checkLeft();
         chainArray=[];
         checkTop();
@@ -70,6 +71,7 @@ function checkingPlayerStatus(){
     {
         classToAdd="p2";
         numberToAddToArray = 2;
+       // checkIfThereIsAvailableMoves(numberToAddToArray);
         checkLeft();
         chainArray=[];
         checkTop();
@@ -120,6 +122,15 @@ function checkingPlayerStatus(){
         console.log('Game over! ' + winnerOfGame + ' wins!!');
     }
 }
+
+function checkIfThereIsAvailableMoves(number){
+    for (var checkingEachNumberOfSquareArray= 0; checkingEachNumberOfSquareArray < squareArray.length; checkingEachNumberOfSquareArray++){
+        if (squareArray[checkingEachNumberOfSquareArray] === 0){
+            ///
+        }
+    }
+}
+
 
 
 
@@ -740,16 +751,22 @@ function changeSquarePlayerClass(arrayFromOscar){
     console.log(arrayIReceived);
     console.log(squareArray);
 
-     if ($(`.square:nth-child(${arrayIReceived[0] + 1})`).hasClass(classToAdd)){
-        for (var receivedArrayIndex = 0; receivedArrayIndex < arrayIReceived.length; receivedArrayIndex++) {
-            $(`.square:nth-child(${arrayIReceived[receivedArrayIndex] + 1})`).removeClass("p1 p2");
-            $(`.square:nth-child(${arrayIReceived[receivedArrayIndex] + 1})`).addClass(classToAdd);
-            console.log('black count is: ' + blackCounter)
-        }
-        for (var indexChangingSquareArray = 0; indexChangingSquareArray < arrayIReceived.length; indexChangingSquareArray ++){
-            squareArray[arrayIReceived[indexChangingSquareArray]] = numberToAddToArray;
-            checkNumberOfP();
-        }
+     if ($(`.square:nth-child(${arrayIReceived[0][0] + 1})`).hasClass(classToAdd)){
+         for (var receivedArrayIndex1 = 0; receivedArrayIndex1 < arrayIReceived.length; receivedArrayIndex1++) {
+
+             for (var receivedArrayIndex2 = 0; receivedArrayIndex2 < arrayIReceived[receivedArrayIndex1].length; receivedArrayIndex2++) {
+                 $(`.square:nth-child(${arrayIReceived[receivedArrayIndex1][receivedArrayIndex2] + 1})`).removeClass("p1 p2");
+                 $(`.square:nth-child(${arrayIReceived[receivedArrayIndex1][receivedArrayIndex2] + 1})`).addClass(classToAdd);
+                 console.log('black count is: ' + blackCounter)
+             }
+         }
+         for (var indexChangingSquareArray1 = 0; indexChangingSquareArray1 < arrayIReceived.length; indexChangingSquareArray1 ++) {
+
+             for (var indexChangingSquareArray2 = 0; indexChangingSquareArray2 < arrayIReceived[indexChangingSquareArray1].length; indexChangingSquareArray2++) {
+                 squareArray[arrayIReceived[indexChangingSquareArray1][indexChangingSquareArray2]] = numberToAddToArray;
+                 checkNumberOfP();
+             }
+         }
     }
 
     console.log(squareArray);
