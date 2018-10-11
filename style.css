@@ -1,0 +1,61 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    font-size: 0;
+    margin: 0;
+    background-color: rgb(168,168,168);
+}
+
+header {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15%;
+    width: 100%;
+    font-size: 2vmin;
+}
+
+.stats {
+    height: 90%;
+    width: 20%;
+    background-color: rgb(168,168,168);
+    display: inline-flex;
+}
+
+
+.container {
+    height: 80%;
+    width: 80%;
+    margin: 1% auto;
+}
+
+.square {
+    height: 12%;
+    width: 11%;
+    background-color: darkgreen;
+    
+    border: 1px black solid;
+    float: left;
+    font-size: 1rem;
+    color: rgb(119, 192, 255);
+}
+.p1{
+
+    background-image: url("images/blackchip_new.png");
+    background-size: 80%;
+    background-repeat:no-repeat;
+    pointer-events: none;
+    background-position: center;
+
+}
+
+.p2{
+    background-image: url("images/whitechip.png");
+    background-size: 65%;
+    background-repeat:no-repeat;
+    pointer-events: none;
+    background-position: center;
+}
+
