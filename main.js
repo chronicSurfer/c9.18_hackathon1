@@ -3,9 +3,10 @@ $(document).ready(InitializeApp);
 var player = 1;
 //0 means empty sqaure 1 is P1 and 2 is P2
 
-var squareArray = [1,2,2,2,0,0,1,0,0,2,2,0,0,2,2,0,0,0,0,0,0,1,0,1,0,2,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,];
+var squareArray = [1,2,2,2,0,0,1,0,0,2,2,0,0,2,2,0,0,0,0,0,0,1,0,1,0,2,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,];
 
 var chainArray = [];
+var tempChainArray = [];
 var currentSquare = null;
 var nextSquarePositiononBigArray = null;
 var currentSquarePositionNumber = null;
@@ -15,6 +16,7 @@ var whiteCounter = 2;
 var blackCounter = 2;
 var winnerOfGame = null;
 var numberToAddToArray = null;
+
 
 
 function InitializeApp(){
@@ -30,39 +32,28 @@ function checkingPlayerStatus(){
 
         classToAdd = "p1";
         numberToAddToArray = 1;
-        // checkIfThereIsAvailableMoves(numberToAddToArray);
-        checkLeft();
-        chainArray=[];
-        checkTop();
-        chainArray=[];
-        checkTopLeft();
-        chainArray=[];
-        checkTopRight();
-        chainArray=[];
-        checkBottomRight();
-        chainArray=[];
-        checkBottom();
-        chainArray=[];
-        checkBottomLeft();
+      // checkIfThereIsAvailableMoves(numberToAddToArray);
+        directionChecker();
+        console.log("it is still player 1 turn");
+        
+       
 
-        ///falsy statement because chainArray is empty. Returns because we only checked where player clicked, not all
-       // availble squares
-        if (!chainArray)
+        
+        if (tempChainArray.length===0)
         {
             return;
-        }
-
-        ///truthy statement because chainArray contains something
-        if(chainArray === true)
+        }else if(tempChainArray.length>0)
         {
             $(event.currentTarget).addClass(classToAdd);
+            player = 2;
+            console.log("plaaaayer is now : "+player)
             var textOfCurrentTarget =  $(event.currentTarget).text();
             squareArray[textOfCurrentTarget] = 1;
-            changeSquarePlayerClass(chainArray);
+            changeSquarePlayerClass(tempChainArray);
         }
         checkNumberOfP();
         console.log('black count is: ' + blackCounter);
-        player=2;
+        // player=2;
         console.log("Current player is now "+ player);
         
     
@@ -71,40 +62,28 @@ function checkingPlayerStatus(){
     {
         classToAdd="p2";
         numberToAddToArray = 2;
-       // checkIfThereIsAvailableMoves(numberToAddToArray);
-        checkLeft();
-        chainArray=[];
-        checkTop();
-        chainArray=[];
-        checkTopLeft();
-        chainArray=[];
-        checkTopRight();
-        chainArray=[];
-        checkBottomRight();
-        chainArray=[];
-        checkBottom();
-        chainArray=[];
-        checkBottomLeft();
+      // checkIfThereIsAvailableMoves(numberToAddToArray);
+        directionChecker();
+        console.log("it is still player 2 turn");
+        
+       
 
-
-        ///falsy statement because chainArray is empty. Returns because we only checked where player clicked, not all
-        // availble squares
-        if (!chainArray)
+        
+        if (tempChainArray.length===0)
         {
             return;
-        }
-
-        ///truthy statement because chainArray contains something
-        if(chainArray === true)
+        }else if(tempChainArray.length>0)
         {
-        $(event.currentTarget).addClass(classToAdd);
-        var textOfCurrentTarget =  $(event.currentTarget).text();
-        squareArray[textOfCurrentTarget] = 2;
-        changeSquarePlayerClass(chainArray);
+            $(event.currentTarget).addClass(classToAdd);
+            player = 1;
+            console.log("plaaaayer is now : "+player)
+            var textOfCurrentTarget =  $(event.currentTarget).text();
+            squareArray[textOfCurrentTarget] = 2;
+            changeSquarePlayerClass(tempChainArray);
         }
         checkNumberOfP();
-        player=1;
-        console.log('white count is: ' + whiteCounter);
+        console.log('black count is: ' + blackCounter);
+        // player=2;
         console.log("Current player is now "+ player);
     }
 
@@ -122,7 +101,6 @@ function checkingPlayerStatus(){
         console.log('Game over! ' + winnerOfGame + ' wins!!');
     }
 }
-
 function checkIfThereIsAvailableMoves(number){
     for (var checkingEachNumberOfSquareArray= 0; checkingEachNumberOfSquareArray < squareArray.length; checkingEachNumberOfSquareArray++){
         if (squareArray[checkingEachNumberOfSquareArray] === 0){
@@ -131,8 +109,6 @@ function checkIfThereIsAvailableMoves(number){
         }
     }
 }
-
-
 
 
 function checkNumberOfP(){
@@ -157,15 +133,22 @@ function checkNumberOfP(){
 function directionChecker(){
 
     checkLeft();
-    // nextSquarePositiononBigArray= null;
-     checkTop()
-    // checkTopLeft();
-    // checkTop();
-    // checkTopRight();
-     checkRight();
-    // checkBottomRight();
-    // checkBottom();
-    // checkBottomLeft();
+    chainArray=[];
+    checkTopLeft();
+    chainArray=[];
+    checkTop();
+    chainArray=[];
+    checkTopRight();
+    chainArray=[];
+    checkRight();
+    chainArray=[];
+    checkBottomRight();
+    chainArray=[];
+    checkBottom();
+    chainArray=[];
+    checkBottomLeft();
+    chainArray=[];
+    console.log("MY LONG ARRAY IS____________"+tempChainArray);
 
 
 }
@@ -212,9 +195,10 @@ function checkRight(){
             }
             if (squareArray[nextSquarePositiononBigArray]===player){
                 chainArray.push(nextSquarePositiononBigArray);
+                tempChainArray.push(chainArray);
                 console.log("ended cuz next is end of working chain");
                 console.log(chainArray);
-                $(event.currentTarget).addClass('p1');
+                $(event.currentTarget).addClass(classToAdd);
                 return chainArray;
             }
             nextSquarePositiononBigArray = parseInt(currentSquare.text()) + (i+1);
@@ -225,9 +209,11 @@ function checkRight(){
 
             }else if(nextSquarePositiononBigArray===player){
                 chainArray.push(nextSquarePositiononBigArray)
-                $(event.currentTarget).addClass('p1');
-                player = 2;
+                $(event.currentTarget).addClass(classToAdd);
+                
                 console.log("my chain 2 is: "+ chainArray)
+                tempChainArray.push(chainArray);
+                console.log("erheiurheuirheiuhreuihr TEMO ARRAY: "+tempChainArray)
                 return chainArray;
             }
         }
@@ -278,6 +264,7 @@ function checkLeft(){
             }
             if (squareArray[nextSquarePositiononBigArray]===player){
                 chainArray.push(nextSquarePositiononBigArray);
+                tempChainArray.push(chainArray);
                 console.log("ended cuz next is end of working chain");
                 console.log(chainArray);
                 $(event.currentTarget).addClass(classToAdd);
@@ -292,8 +279,9 @@ function checkLeft(){
             }else if(nextSquarePositiononBigArray===player){
                 chainArray.push(nextSquarePositiononBigArray)
                 $(event.currentTarget).addClass(classToAdd);
-                player = 2;
+                
                 console.log("my chain 2 is: "+ chainArray)
+                tempChainArray.push(chainArray);
                 return chainArray;
             }
         }
@@ -351,6 +339,7 @@ function checkTop(){
             }
             if (squareArray[nextSquarePositiononBigArray]===player){
                 chainArray.push(nextSquarePositiononBigArray);
+                tempChainArray.push(chainArray);
                 console.log("ended cuz next top is end of working chain");
                 console.log(chainArray);
                 $(event.currentTarget).addClass(classToAdd);
@@ -365,8 +354,9 @@ function checkTop(){
             }else if(nextSquarePositiononBigArray===player){
                 chainArray.push(nextSquarePositiononBigArray)
                 $(event.currentTarget).addClass(classToAdd);
-                player = 2;
+                
                 console.log("my chain 2 is: "+ chainArray)
+                tempChainArray.push(chainArray);
                 return chainArray;
             }
         }
@@ -392,6 +382,7 @@ function checkTopLeft(){
         console.log("ended cuz top left edge 1");
         return;
     }
+    
     if (squareArray[nextSquarePositiononBigArray]===0){
         chainArray = [];
         console.log("ended cuz empty top left next");
@@ -425,6 +416,7 @@ function checkTopLeft(){
             }
             if (squareArray[nextSquarePositiononBigArray]===player){
                 chainArray.push(nextSquarePositiononBigArray);
+                tempChainArray.push(chainArray);
                 console.log("ended cuz next top is end of working chain");
                 console.log(chainArray);
                 $(event.currentTarget).addClass(classToAdd);
@@ -439,8 +431,9 @@ function checkTopLeft(){
             }else if(nextSquarePositiononBigArray===player){
                 chainArray.push(nextSquarePositiononBigArray)
                 $(event.currentTarget).addClass(classToAdd);
-                player = 2;
+                
                 console.log("my chain 2 is: "+ chainArray)
+                tempChainArray.push(chainArray);
                 return chainArray;
             }
         }
@@ -500,6 +493,7 @@ function checkTopRight(){
             }
             if (squareArray[nextSquarePositiononBigArray]===player){
                 chainArray.push(nextSquarePositiononBigArray);
+                tempChainArray.push(chainArray);
                 console.log("ended cuz next top is end of working chain");
                 console.log(chainArray);
                 $(event.currentTarget).addClass(classToAdd);
@@ -514,8 +508,9 @@ function checkTopRight(){
             }else if(nextSquarePositiononBigArray===player){
                 chainArray.push(nextSquarePositiononBigArray)
                 $(event.currentTarget).addClass(classToAdd);
-                player = 2;
+                
                 console.log("my chain 2 is: "+ chainArray)
+                tempChainArray.push(chainArray);
                 return chainArray;
             }
         }
@@ -574,6 +569,7 @@ function checkBottomRight(){
             }
             if (squareArray[nextSquarePositiononBigArray]===player){
                 chainArray.push(nextSquarePositiononBigArray);
+                tempChainArray.push(chainArray);
                 console.log("ended cuz next bottom right is end of working chain");
                 console.log(chainArray);
                 $(event.currentTarget).addClass(classToAdd);
@@ -588,8 +584,9 @@ function checkBottomRight(){
             }else if(nextSquarePositiononBigArray===player){
                 chainArray.push(nextSquarePositiononBigArray)
                 $(event.currentTarget).addClass(classToAdd);
-                player = 2;
+                
                 console.log("my chain 2 is: "+ chainArray)
+                tempChainArray.push(chainArray);
                 return chainArray;
             }
         }
@@ -650,6 +647,8 @@ function checkBottom(){
                 console.log("ended cuz next bottom is end of working chain");
                 console.log(chainArray);
                 $(event.currentTarget).addClass(classToAdd);
+                tempChainArray.push(chainArray);
+                console.log("erheiurheuirheiuhreuihr TEMO ARRAY: "+tempChainArray)
                 return chainArray;
             }
             
@@ -661,8 +660,10 @@ function checkBottom(){
             }else if(nextSquarePositiononBigArray===player){
                 chainArray.push(nextSquarePositiononBigArray)
                 $(event.currentTarget).addClass(classToAdd);
-                player = 2;
+                
                 console.log("my chain 2 is: "+ chainArray)
+                tempChainArray.push(chainArray);
+                console.log("erheiurheuirheiuhreuihr TEMO ARRAY: "+tempChainArray)
                 return chainArray;
             }
         }
@@ -720,6 +721,7 @@ function checkBottomLeft(){
             }
             if (squareArray[nextSquarePositiononBigArray]===player){
                 chainArray.push(nextSquarePositiononBigArray);
+                tempChainArray.push(chainArray);
                 console.log("ended cuz next bottom is end of working chain");
                 console.log(chainArray);
                 $(event.currentTarget).addClass(classToAdd);
@@ -734,8 +736,9 @@ function checkBottomLeft(){
             }else if(nextSquarePositiononBigArray===player){
                 chainArray.push(nextSquarePositiononBigArray)
                 $(event.currentTarget).addClass(classToAdd);
-                player = 2;
+                
                 console.log("my chain 2 is: "+ chainArray)
+                tempChainArray.push(chainArray);
                 return chainArray;
             }
         }
@@ -747,3 +750,31 @@ function checkBottomLeft(){
 
 //this function changes the divs classes to what ever the first div in the array is. The array I am speaking about is the array given to this
 //function from directionChecker function
+function changeSquarePlayerClass(arrayFromOscar){
+    var arrayIReceived = arrayFromOscar;
+    console.log("array received is: "+arrayIReceived);
+    console.log(squareArray);
+    for(var i = 0; i < arrayFromOscar.length; i++){
+        for(var k = 0; k < arrayFromOscar[i].length; k++){
+            squareArray[arrayFromOscar[i][k]]=player;
+            $(`.square:nth-child(${arrayFromOscar[i][k] +1})`).removeClass("p1 p2");
+            $(`.square:nth-child(${arrayFromOscar[i][k] +1})`).addClass(classToAdd);
+        }
+    }
+
+
+    tempChainArray=[];
+    //  if ($(`.square:nth-child(${arrayIReceived[0] + 1})`).hasClass(classToAdd)){
+    //     for (var receivedArrayIndex = 0; receivedArrayIndex < arrayIReceived.length; receivedArrayIndex++) {
+    //         $(`.square:nth-child(${arrayIReceived[receivedArrayIndex] + 1})`).removeClass("p1 p2");
+    //         $(`.square:nth-child(${arrayIReceived[receivedArrayIndex] + 1})`).addClass(classToAdd);
+    //         console.log('black count is: ' + blackCounter)
+    //     }
+    //     for (var indexChangingSquareArray = 0; indexChangingSquareArray < arrayIReceived.length; indexChangingSquareArray ++){
+    //         squareArray[arrayIReceived[indexChangingSquareArray]] = numberToAddToArray;
+    //         checkNumberOfP();
+    //     }
+    // }
+
+    console.log(squareArray);
+}
