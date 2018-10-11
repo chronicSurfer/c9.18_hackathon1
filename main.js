@@ -1,6 +1,13 @@
 $(document).ready(InitializeApp);
 
 var player = 1;
+//0 means empty sqaure 1 is P1 and 2 is P2
+var squareArray = [1,2,2,0,0,0,1,0,0,1,2,1,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,];
+var chainArray = [];
+var currentSquare = null;
+var nextSquarePositiononBigArray = null;
+var currentSquarePositionNumber = null;
+var gridWidth = 8;
 
 function InitializeApp(){
     $('.square').click(checkingPlayerStatus);
@@ -9,27 +16,36 @@ function InitializeApp(){
 
 function checkingPlayerStatus(){
     if (player === 1){
-        $(event.currentTarget).addClass('p1');
-        player = 2;
+        
+        
+        checkLeft();
+        checkTop();
+        
     }
-    else if (player === 2){
-        $(event.currentTarget).addClass('p2');
-        player = 1;
-    }
+    // else if (player === 2){
+        
+    //     currentSquarePositionNumber = Number($(event.currentTarget).text());
+    //     currentSquare = $(event.target);
+
+    //     checkLeft();
+    //     $(event.currentTarget).addClass('p2');
+    //     currentSquare = $(event.target);
+    //     player = 1;
+    // }
 
 }
 
 
 
 
-//0 means empty sqaure 1 is P1 and 2 is P2
-var squareArray = [0,0,0,0,0,1,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,];
-var chainArray = [];
 
 
-function directionChecker(currentSquare){
-    currentSquarePositionNumber = [Number(currentSquare.text())];
+
+function directionChecker(){
+    
     checkLeft();
+    // nextSquarePositiononBigArray= null;
+    // checkTop()
     // checkTopLeft();
     // checkTop();
     // checkTopRight();
@@ -41,42 +57,145 @@ function directionChecker(currentSquare){
     
 }
 function checkLeft(){
+    currentSquarePositionNumber = Number($(event.currentTarget).text());
+    
+    currentSquare = $(event.target);
+    nextSquarePositiononBigArray = currentSquarePositionNumber - 1;
+    console.log("this is t or f: "+currentSquare.hasClass("left-edge"));
+    console.log(squareArray[currentSquarePositionNumber - 1]);
     
     if (currentSquare.hasClass("left-edge")){
         chainArray = [];
+        console.log("ended cuz edge 1");
         return;
     }
-    if (squareArray[currentSquarePositionNumber] - 1===0){
+    if (squareArray[nextSquarePositiononBigArray]===0){
         chainArray = [];
+        console.log("ended cuz empty next");
+        
         return;
     }
-    if (squareArray[currentSquarePositionNumber] - 1===player){
+    if (squareArray[nextSquarePositiononBigArray]===player){
         chainArray = [];
+        console.log("ended cuz next is same kind");
         return;
     }
-    var gridWidth = 8
-    if (squareArray[currentSquarePositionNumber] - 1 !==player){
-        chainArray.push(squareArray[currentSquarePositionNumber]);
-        chainArray.push(squareArray[currentSquarePositionNumber-1])
-        for (i=0; i<gridWidth; i++){
-            var nextSquare = squareArray[currentSquarePositionNumber-(i+1)];
-            if (nextSquare!==player){
-                chainArray.push(nextSquare)
     
-            }else if(nextSquare===player){
-                chainArray.push(nextSquare)
+    if (nextSquarePositiononBigArray!==player){
+        chainArray.push(Number(currentSquare.text()));
+        console.log("currentAqaure is: "+currentSquare.text());
+        
+        for (i=0; i<gridWidth; i++){
+            if (currentSquare.hasClass("left-edge")){
+                chainArray = [];
+                console.log("ended cuz edge 1");
+                return;
+            }
+            if (squareArray[nextSquarePositiononBigArray]===0){
+                chainArray = [];
+                console.log("ended cuz empty next");
+                
+                return;
+            }
+            if (squareArray[nextSquarePositiononBigArray]===player){
+                chainArray.push(nextSquarePositiononBigArray);
+                console.log("ended cuz next is end of working chain");
+                console.log(chainArray);
+                $(event.currentTarget).addClass('p1');
+                return chainArray;
+            }
+            nextSquarePositiononBigArray = currentSquare.text()-(i+1);
+            console.log(nextSquarePositiononBigArray+"thiiiiis is next sqaure");
+            if (squareArray[nextSquarePositiononBigArray]!==player && squareArray[nextSquarePositiononBigArray]!==0){
+                chainArray.push(nextSquarePositiononBigArray)
+                console.log("my chain 1 is: "+ chainArray)
+    
+            }else if(nextSquarePositiononBigArray===player){
+                chainArray.push(nextSquarePositiononBigArray)
+                $(event.currentTarget).addClass('p1');
+                player = 2;
+                console.log("my chain 2 is: "+ chainArray)
                 return chainArray;
             }
         }
 
     }
     
-    var tempCurrent = currentSquarePosition;
-    var leftSquare = squareArray[tempCurrent - 1];
-    chainArray.push(currentSquarePosition);
-    chainArray.push(leftSquare);
+    
 }
 
+function checkTop(){
+    console.log("check top ran");
+    currentSquarePositionNumber = Number($(event.currentTarget).text());
+    
+    
+    currentSquare = $(event.target);
+    
+    nextSquarePositiononBigArray = currentSquarePositionNumber - gridWidth;
+    console.log("this is t or f: "+currentSquare.hasClass("top-edge"));
+    console.log(currentSquarePositionNumber - gridWidth);
+    
+    if (currentSquare.hasClass("top-edge")){
+        chainArray = [];
+        console.log("ended cuz top edge 1");
+        return;
+    }
+    if (squareArray[nextSquarePositiononBigArray]===0){
+        chainArray = [];
+        console.log("ended cuz empty top next");
+        
+        return;
+    }
+    if (squareArray[nextSquarePositiononBigArray]===player){
+        chainArray = [];
+        console.log("ended cuz top next is same kind");
+        return;
+    }
+    
+    if (nextSquarePositiononBigArray!==player){
+        chainArray.push(Number(currentSquare.text()));
+        console.log("currentAqaure is: "+currentSquare.text());
+        
+        for (i=0; i<gridWidth; i++){
+            nextSquarePositiononBigArray = currentSquare.text()-(i*gridWidth+gridWidth);
+            console.log("NEXT SQUARE IS: "+nextSquarePositiononBigArray)
+            if (currentSquare.hasClass("top-edge")){
+                chainArray = [];
+                console.log("ended cuz top edge 1");
+                return;
+            }
+            if (squareArray[nextSquarePositiononBigArray]===0){
+                chainArray = [];
+                console.log("ended cuz top empty next");
+                
+                return;
+            }
+            if (squareArray[nextSquarePositiononBigArray]===player){
+                chainArray.push(nextSquarePositiononBigArray);
+                console.log("ended cuz next top is end of working chain");
+                console.log(chainArray);
+                $(event.currentTarget).addClass('p1');
+                return chainArray;
+            }
+            
+            console.log(nextSquarePositiononBigArray+"thiiiiis is next sqaure");
+            if (squareArray[nextSquarePositiononBigArray]!==player && squareArray[nextSquarePositiononBigArray]!==0){
+                chainArray.push(nextSquarePositiononBigArray)
+                console.log("my chain 1 is: "+ chainArray)
+    
+            }else if(nextSquarePositiononBigArray===player){
+                chainArray.push(nextSquarePositiononBigArray)
+                $(event.currentTarget).addClass('p1');
+                player = 2;
+                console.log("my chain 2 is: "+ chainArray)
+                return chainArray;
+            }
+        }
+
+    }
+    
+    
+}
 
 
 /*
