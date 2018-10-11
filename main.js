@@ -46,14 +46,19 @@ function checkingPlayerStatus(){
         chainArray=[];
         checkBottomLeft();
 
-        if (!chainArray){ ///falsy statement because chainArray is empty
+        ///falsy statement because chainArray is empty. Returns because we only checked where player clicked, not all
+       // availble squares
+        if (!chainArray)
+        {
             return;
         }
 
-        if(chainArray) { ///truthy statement because chainArray contains something
+        ///truthy statement because chainArray contains something
+        if(chainArray)
+        {
             $(event.currentTarget).addClass(classToAdd);
             var textOfCurrentTarget =  $(event.currentTarget).text();
-            squareArray[textOfCurrentTarget] = 2;
+            squareArray[textOfCurrentTarget] = 1;
             changeSquarePlayerClass(chainArray);
         }
         checkNumberOfP();
@@ -63,7 +68,8 @@ function checkingPlayerStatus(){
         
     
     }
-    else if (player === 2){
+    else if (player === 2)
+    {
         classToAdd="p2";
         numberToAddToArray = 2;
         checkLeft();
@@ -80,18 +86,24 @@ function checkingPlayerStatus(){
         chainArray=[];
         checkBottomLeft();
 
-        if (!chainArray){ ///falsy statement because chainArray is empty
+
+        ///falsy statement because chainArray is empty. Returns because we only checked where player clicked, not all
+        // availble squares
+        if (!chainArray)
+        {
             return;
         }
 
-        if(chainArray) { ///truthy statement because chainArray contains something
+        ///truthy statement because chainArray contains something
+        if(chainArray)
+        {
         $(event.currentTarget).addClass(classToAdd);
         var textOfCurrentTarget =  $(event.currentTarget).text();
         squareArray[textOfCurrentTarget] = 2;
         changeSquarePlayerClass(chainArray);
         }
         checkNumberOfP();
-        player=1
+        player=1;
         console.log('white count is: ' + whiteCounter);
         console.log("Current player is now "+ player);
     }
@@ -99,16 +111,13 @@ function checkingPlayerStatus(){
     if (parseInt(whiteCounter) > parseInt(blackCounter)){
         winnerOfGame = 'White Player';
     }
-    else{
+    else if (parseInt(whiteCounter) < parseInt(blackCounter)){
         winnerOfGame = 'Black Player';
     }
 
     if (parseInt(whiteCounter) + parseInt(blackCounter === 64))
     {   /////KNOW WHEN GAME IS OVER!
         console.log('Game over! ' + winnerOfGame + ' wins!!');
-
-
-
     }
 }
 
