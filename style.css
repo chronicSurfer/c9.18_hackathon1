@@ -17,6 +17,13 @@ header {
     font-size: 2vmin;
 }
 
+.stats {
+    height: 90%;
+    width: 20%;
+    background-color: rgb(168,168,168);
+    display: inline-flex;
+}
+
 
 .container {
     height: 80%;
@@ -26,12 +33,16 @@ header {
 
 .square {
     height: 12%;
-    width: 12%;
+    width: 11%;
     background-color: darkgreen;
+    
     border: 1px black solid;
     float: left;
+    font-size: 1rem;
+    color: rgb(119, 192, 255);
 }
 .p1{
+
     background-image: url("images/blackchip_new.png");
     background-size: 80%;
     background-repeat:no-repeat;
@@ -46,6 +57,5 @@ header {
     background-repeat:no-repeat;
     pointer-events: none;
     background-position: center;
-
 }
 
