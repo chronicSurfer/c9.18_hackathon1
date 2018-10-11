@@ -3,7 +3,7 @@ $(document).ready(InitializeApp);
 var player = 1;
 //0 means empty sqaure 1 is P1 and 2 is P2
 
-var squareArray = [1,2,2,2,0,0,1,0,0,2,2,0,0,2,2,0,0,0,0,0,0,1,0,1,0,2,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,];
+var squareArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,];
 
 var chainArray = [];
 var tempChainArray = [];
@@ -45,11 +45,12 @@ function checkingPlayerStatus(){
         }else if(tempChainArray.length>0)
         {
             $(event.currentTarget).addClass(classToAdd);
-            player = 2;
+            
             console.log("plaaaayer is now : "+player)
             var textOfCurrentTarget =  $(event.currentTarget).text();
             squareArray[textOfCurrentTarget] = 1;
             changeSquarePlayerClass(tempChainArray);
+            player = 2;
         }
         checkNumberOfP();
         console.log('black count is: ' + blackCounter);
@@ -74,11 +75,12 @@ function checkingPlayerStatus(){
         }else if(tempChainArray.length>0)
         {
             $(event.currentTarget).addClass(classToAdd);
-            player = 1;
+            
             console.log("plaaaayer is now : "+player)
             var textOfCurrentTarget =  $(event.currentTarget).text();
             squareArray[textOfCurrentTarget] = 2;
             changeSquarePlayerClass(tempChainArray);
+            player = 1;
         }
         checkNumberOfP();
         console.log('black count is: ' + blackCounter);
@@ -140,6 +142,8 @@ function directionChecker(){
     chainArray=[];
     checkBottomLeft();
     chainArray=[];
+    nextSquarePositiononBigArray = null;
+    currentSquarePositionNumber = null;
     console.log("MY LONG ARRAY IS____________"+tempChainArray);
 
 
@@ -751,6 +755,7 @@ function changeSquarePlayerClass(arrayFromOscar){
             squareArray[arrayFromOscar[i][k]]=player;
             $(`.square:nth-child(${arrayFromOscar[i][k] +1})`).removeClass("p1 p2");
             $(`.square:nth-child(${arrayFromOscar[i][k] +1})`).addClass(classToAdd);
+            
         }
     }
 
