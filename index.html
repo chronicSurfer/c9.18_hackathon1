@@ -1,38 +1,35 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <title>Othello (Reversi)</title>
+
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="main.js">
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title>Othello (Reversi)</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <div class="playerStats">
-            <p class="player1">Player 1: </p>
+            <p class="player1">SITH: <div class="counterSith"></div></p>
         </div>
         <div class="playerStats">
-            <p class="game-header">OTHELLO</p>
+            <p class="game-header">SPACE WARS</p>
         </div>
         <div class="playerStats">
-            <p class="player2">Player 2: </p>
+            <p class="player2">BORG: <div class="counterBorg"></div></p>
         </div>
 
 
     </header>
 
-
-        <div class="container">
-
-
+        <div class="container-game">
 
             <div class="square top-edge left-edge top-left">0</div>
             <div class="square top-edge">1</div>
@@ -40,38 +37,34 @@
             <div class="square top-edge">3</div>
             <div class="square top-edge">4</div>
             <div class="square top-edge">5</div>
-            <div class="square top-edge  ">6</div>
+            <div class="square top-edge">6</div>
             <div class="square top-edge right-edge top-right">7</div>
-
             <div class="square left-edge">8</div>
-            <div class="square   ">9</div>
-            <div class="square   ">10</div>
+            <div class="square">9</div>
+            <div class="square">10</div>
             <div class="square">11</div>
             <div class="square">12</div>
-            <div class="square   ">13</div>
-            <div class="square   ">14</div>
+            <div class="square">13</div>
+            <div class="square">14</div>
             <div class="square right-edge">15</div>
-
             <div class="square left-edge">16</div>
             <div class="square">17</div>
             <div class="square">18</div>
             <div class="square">19</div>
             <div class="square">20</div>
-            <div class="square  ">21</div>
-
+            <div class="square">21</div>
             <div class="square">22</div>
-            <div class="square right-edge  ">23</div>
+            <div class="square right-edge">23</div>
             <div class="square left-edge">24</div>
-
-            <div class="square   ">25</div>
+            <div class="square">25</div>
             <div class="square">26</div>
             <div class="square p1">27</div>
             <div class="square p2">28</div>
             <div class="square">29</div>
             <div class="square">30</div>
             <div class="square right-edge">31</div>
-            <div class="square left-edge  ">32</div>
-            <div class="square  ">33</div>
+            <div class="square left-edge p1">32</div>
+            <div class="square">33</div>
             <div class="square">34</div>
             <div class="square p2">35</div>
             <div class="square p1">36</div>
@@ -104,6 +97,9 @@
             <div class="square bottom-edge right-edge bottom-right">63</div>
 
         </div>
-
+    <footer class="directions">
+        <p class="directions2"><a href="directions.html" class="directionLink">Directions & Settings</a></p>
+        <p class="direction2 sweetbutton"><a href="" class="directionLink">Sweet Button</a></p>
+    </footer>
 </body>
 </html>

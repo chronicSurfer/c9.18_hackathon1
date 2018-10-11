@@ -19,6 +19,7 @@ var numberToAddToArray = null;
 
 
 
+
 function InitializeApp(){
     $('.square').click(checkingPlayerStatus);
 }
@@ -774,3 +775,5 @@ function changeSquarePlayerClass(arrayFromOscar){
 
     console.log(squareArray);
 }
+
+
