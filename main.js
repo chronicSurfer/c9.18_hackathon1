@@ -130,6 +130,8 @@ function checkNumberOfP(){
     }
     whiteCounter = whitecounting;
     blackCounter = blackcounting;
+    $('.counterBorg').text(whiteCounter);
+    $('.counterSith').text(blackCounter);
 }
 
 //0 means empty square 1 is P1 and 2 is P2
