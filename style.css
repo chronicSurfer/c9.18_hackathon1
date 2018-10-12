@@ -3,29 +3,33 @@ body {
     width: 100vw;
     font-size: 0;
     margin: 0;
-    background-color: rgb(168,168,168);
+    background-image: url("images/space.png");
 }
 
 header {
-    background-color: black;
     color: white;
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 15%;
+    height: 11%;
     width: 100%;
     font-size: 2vmin;
 }
 
-.stats {
-    height: 90%;
-    width: 20%;
-    background-color: rgb(168,168,168);
+
+.playerStats {
+    height: 100%;
+    width: 33.33%;
     display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 3em;
+    color: black;
+    text-shadow: 3px 1px 2px red;
+
 }
 
 
-.container {
+.container-game {
     height: 80%;
     width: 80%;
     margin: 1% auto;
@@ -33,18 +37,35 @@ header {
 
 .square {
     height: 12%;
-    width: 11%;
-    background-color: darkgreen;
-    
+    width: 12%;
+    /*box shadowing created at cssmatic website*/
+    -webkit-box-shadow:  0px 1px 19px 1px red;
+    -moz-box-shadow:  0px 1px 19px 1px red;
+    box-shadow:  0px 1px 19px 1px red;
     border: 1px black solid;
     float: left;
-    font-size: 1rem;
-    color: rgb(119, 192, 255);
 }
+
+.top-left {
+    border-radius: 20px 0px 0px 0px;
+}
+
+.top-right {
+    border-radius: 0px 20px 0px 0px;
+}
+
+.bottom-right {
+    border-radius: 0px 0px 20px 0px;
+}
+
+.bottom-left {
+    border-radius: 0px 0px 0px 20px;
+}
+
 .p1{
 
-    background-image: url("images/blackchip_new.png");
-    background-size: 80%;
+    background-image: url("images/deathstar.png");
+    background-size: 45%;
     background-repeat:no-repeat;
     pointer-events: none;
     background-position: center;
@@ -52,10 +73,33 @@ header {
 }
 
 .p2{
-    background-image: url("images/whitechip.png");
-    background-size: 65%;
+    background-image: url("images/borgcube.png");
+    background-size: 60%;
     background-repeat:no-repeat;
     pointer-events: none;
     background-position: center;
 }
+
+footer {
+    height: 5%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.directions2 {
+    /*display: inline-flex;*/
+
+}
+
+.directionLink {
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    color: black;
+    font-size: 1.2rem;
+    text-shadow: 1px 0px 1px red;
+    margin-right: 45px;
+}
+
 
