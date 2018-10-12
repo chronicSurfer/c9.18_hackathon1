@@ -1,0 +1,31 @@
+body {
+    height: 100%;
+    width: 100%;
+    font-size: 0;
+    margin: 0;
+    background-image: url("images/space.png");
+}
+
+.header {
+    height: 20%;
+    width: 100%;
+
+
+}
+
+h1 {
+
+    font-size: 3rem;
+    color: white;
+}
+
+.directionContainer {
+    height: 60%;
+    width: 100%;
+}
+
+h4 {
+    color: white;
+    font-size: 2rem;
+}
+
